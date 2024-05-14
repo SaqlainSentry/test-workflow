@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
     inputs:
       who:
-        description: 'Test workflow'
+        description: 'Who to greet'
         required: true
         type: string
 
@@ -16,7 +16,7 @@ jobs:
       - id: foo
         uses: SaqlainSentry/hello-world-composite-action@v2
         with:
-          who-to-greet: 'Mona the Octocat'
+          who-to-greet: ${{ inputs.who||'Mona the Octocat'}}
       - run: echo random-number "$RANDOM_NUMBER"
         shell: bash
         env:
